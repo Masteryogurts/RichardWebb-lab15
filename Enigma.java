@@ -1,16 +1,17 @@
 public class Enigma{
 
-    private String rotorInit[] = {"#GNUAHOVBIPWCJQXDKRYELSZFMT",
+    public String rotorInit[] = {"#GNUAHOVBIPWCJQXDKRYELSZFMT",
         "#EJOTYCHMRWAFKPUZDINSXBGLQV",
         "#BDFHJLNPRTVXZACEGIKMOQSUWY",
         "#NWDKHGXZVRIFJBLMAOPSCYUTQE",
         "#TGOWHLIFMCSZYRVXQABUPEJKND"};
 
 
-    private Rotor rotors[];
+    public Rotor rotors[];
+
 
     //hardcode the alphabet in here as our fixed outer ring
-    private String s = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public String s = "#ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         
     public Enigma(int id1, int id2, int id3, String start){
 
@@ -21,11 +22,18 @@ public class Enigma{
         
     }
 
+    public String decryptresult1 = "";
+
+    public String decryptresult2 = "";
+
+    public String encryptresult1 = "";
+    public String encyrptresult2 = "";
+
 
     public String decrypt(String message){        
         //TODO
         String result = ""; //start with an empty string variable called result where we will hold everything later
-
+        decryptresult1 = message;
         //loop through message
         for (int i = 0; i < message.length(); i++) {
             //find the character
@@ -48,6 +56,7 @@ public class Enigma{
 
         }
         //return that result
+        decryptresult2 = result;
         return result;
 
         
@@ -59,6 +68,7 @@ public class Enigma{
         //TODO
         //create a result that we add to later
         String result = "";
+        encryptresult1 = message;
 
         //iterate through the message
         for (int i = 0; i < message.length(); i++) {
@@ -81,8 +91,25 @@ public class Enigma{
             rotate();
         }
         //return the full result
+        encyrptresult2 = result;
         return result;
     }
+
+    public String getdecryptinput(){
+        return decryptresult1;
+    }
+    public String getdecryptoutput(){
+        return decryptresult2;
+    }
+    public String getencryptinput(){
+        return encryptresult1;
+    }
+    public String getencryptoutput(){
+        return encyrptresult2;
+    }
+
+
+
 
     
     private void rotate(){
